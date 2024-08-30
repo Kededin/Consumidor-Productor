@@ -92,7 +92,14 @@ public class ProductorConsumidor {
 
         productor.start();
         consumidor.start();
+        productor.join();
+        cola.add(-1);
+        consumidor.join();
 
+        int[] conteo = consumidor.getConteoDecenas();
+        for (int i = 0; i < conteo.length; i++) {
+            System.out.println("Cantidad entre " + (i * 10 + 1) + " y " + ((i + 1) * 10) + ": " + conteo[i]);
+        }
         
     }
 }
